@@ -24,7 +24,7 @@ function Copy-SshId {
         New-Item $authorizedKeysPath -ItemType File; `
     } `
 
-    $existingKeys = Get-Content $authorizedKeysPath; `
+    $existingKeys = @(Get-Content $authorizedKeysPath); `
     if ($existingKeys -notcontains $pubKey) { `
         Set-Content -Value ($existingKeys + $pubKey) -Path $authorizedKeysPath; `
     }
